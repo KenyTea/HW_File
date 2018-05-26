@@ -24,16 +24,15 @@ namespace HW_File
 
         static void Main(string[] args)
         {
-            //#region 2
             //WriteNum();
             //ReadNum();
-            //#endregion
 
-            Fio();
+            //Fio();
 
+            Fibon();
 
         }
-         #region 2. Сложить два целых числа А и В.
+        #region 2. Сложить два целых числа А и В.
         static string path = @"C:\Users\AVassilyev\Documents\visual studio 2017\Projects\HW_File\INPUT.txt";
 
         public static void WriteNum()
@@ -93,6 +92,7 @@ namespace HW_File
         }
         #endregion
 
+        #region 2. С помощью класса StreamWriter записать в текстовый файл свое имя, фамилию и возраст.
         public static void Fio()
         {
             string path2 = @"C:\Users\AVassilyev\Documents\visual studio 2017\Projects\HW_File\Fio.txt";
@@ -118,7 +118,46 @@ namespace HW_File
                     swrite.WriteLine(age);
                     Console.WriteLine("Information was write in Fio.txt");
                 }
-            }      
+            }
         }
+        #endregion
+
+        #region 1. Fibonachi
+        public static void Fibon()
+        {
+            Console.WriteLine("До какого числа считать ряд Фибоначчи?");
+            int number = Convert.ToInt32(Console.ReadLine());
+            int num = 0;
+            int num2 = 0;
+            FileInfo f = new FileInfo(@"C:\Users\AVassilyev\Documents\visual studio 2017\Projects\HW_File\Fibinachii.txt");
+
+            using (FileStream fss = f.Open(FileMode.Open, FileAccess.Read))
+            {
+                using (StreamReader sr = new StreamReader(fss, System.Text.Encoding.ASCII))
+                {
+                    string t = sr.ReadLine();
+                    var m = t.Split(',');
+                    num = int.Parse(m[0]); 
+                    num2 = int.Parse(m[1]);                          
+                }
+            }
+
+           
+            Console.Write("{0} ", num);
+           
+            Console.Write("{0} ", num2);
+            int sum = 0;
+
+            while (number >= sum)
+            {
+                sum = num + num2;
+
+                Console.Write("{0} ", sum);
+
+                num = num2;
+                num2 = sum;
+            }
+        }
+        #endregion
     }
 }
