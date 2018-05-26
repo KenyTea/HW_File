@@ -24,9 +24,16 @@ namespace HW_File
 
         static void Main(string[] args)
         {
-            WriteNum();
-            ReadNum();
+            //#region 2
+            //WriteNum();
+            //ReadNum();
+            //#endregion
+
+            Fio();
+
+
         }
+         #region 2. Сложить два целых числа А и В.
         static string path = @"C:\Users\AVassilyev\Documents\visual studio 2017\Projects\HW_File\INPUT.txt";
 
         public static void WriteNum()
@@ -83,6 +90,35 @@ namespace HW_File
                 }
             } // закрытие потока
 
+        }
+        #endregion
+
+        public static void Fio()
+        {
+            string path2 = @"C:\Users\AVassilyev\Documents\visual studio 2017\Projects\HW_File\Fio.txt";
+
+            FileInfo file = new FileInfo(path2);
+
+            Console.WriteLine("Enter your name");
+            string name = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Enter Family name");
+            string Fname = Console.ReadLine();
+            Console.WriteLine();
+            Console.WriteLine("Enter your age");
+            string age = Console.ReadLine();
+            Console.WriteLine();
+
+            using (FileStream fstr = file.Open(FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                using (StreamWriter swrite = new StreamWriter(fstr, System.Text.Encoding.Default))
+                {
+                    swrite.WriteLine(name);
+                    swrite.WriteLine(Fname);
+                    swrite.WriteLine(age);
+                    Console.WriteLine("Information was write in Fio.txt");
+                }
+            }      
         }
     }
 }
