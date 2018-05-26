@@ -29,7 +29,6 @@ namespace HW_File
         }
         static string path = @"C:\Users\AVassilyev\Documents\visual studio 2017\Projects\HW_File\INPUT.txt";
 
-
         public static void WriteNum()
         {
             FileInfo fi = new FileInfo(path);
